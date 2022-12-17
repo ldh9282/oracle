@@ -1,0 +1,2 @@
+A single database can contain thousands of users/schemas
+유저/스키마는 데이터베이스를 다루는 권한

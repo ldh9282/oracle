@@ -1,0 +1,2 @@
+tablespace에 datafiles(.dbf)가 있고 데이터베이스는 tablespace의 모음
+ 

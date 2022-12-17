@@ -1,0 +1,8 @@
+-- Hierarchical Query (계층 쿼리)
+-- https://oracle-base.com/articles/misc/hierarchical-queries
+SELECT last_name AS "RESULT",
+        CONNECT_BY_ROOT employee_id AS "ROOT_EMPLOYEE_ID", 
+        RPAD('.', (level-1)*2, '.') || employee_id AS "TREE", LEVEL
+FROM hr.employees
+START WITH manager_id IS NULL
+CONNECT BY (PRIOR employee_id = manager_id );

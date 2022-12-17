@@ -1,0 +1,8 @@
+<테이블, 튜플, 제약조건, 인덱스 모두 백업하는 방법>
+삭제할 테이블과  그것의 파생 테이블들을 sqlDeveloper에서 익스포트 후 (sql문 생성됨)
+테이블 생성 순서대로 백업sql을 실행해야 제약조건(혹은 인덱스)이 충돌이 나지 않음
+부모테이블 먼저 생성 후 자식테이블 생성해야함
+
+<예시>
+products >> buy_companys >> buy >> buy_detail
+products >> sales  >> sales_detail

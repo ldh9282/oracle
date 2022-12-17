@@ -1,0 +1,7 @@
+SELECT TO_DATE('2022.11.01', 'YYYY.MM.DD')
+FROM DUAL;
+
+SELECT TO_CHAR(
+            TO_DATE('2022.11.01', 'YYYY.MM.DD'),
+            'yy/MM/dd (DAY)')
+FROM DUAL;

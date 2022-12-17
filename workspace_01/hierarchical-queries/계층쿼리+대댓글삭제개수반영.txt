@@ -1,0 +1,8 @@
+--SELECT rno AS "RESULT",
+--        CONNECT_BY_ROOT rno AS "ROOT_RNO", 
+--        RPAD('.', (level-1)*2, '.') || rno AS "TREE", LEVEL, a.*
+SELECT count(*)
+FROM book_ex.tbl_myreply a
+WHERE CONNECT_BY_ROOT rno = 75 
+START WITH prno is null
+CONNECT BY (PRIOR rno = prno);

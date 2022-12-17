@@ -1,0 +1,29 @@
+connection pool
+데이터베이스 커넥션을 재사용할 수 있도록 마련한 임시메모리(캐쉬)...
+연결할 때마다 드는 코스트를 절약하기 위해 임시메모리 사용...
+임시 메모리가 부족하면(모든 연결이 사용중이면) 새로운 커넥션 풀 생성...
+
+
+tomcat >context.xml 수정
+
+name 이 식별자
+
+Context context = new InitialContext();
+Context envContext = (Context) context.lookup("java:/comp/env");
+dataSource = (DataSource) envContext.lookup("jdbc/myuser"); // 여기서 name 사용됨
+
+url, username, password가 DB의 스키마와 관련된 값
+type, driverClassName이 DB 드라이버에 관련된 클래스
+나머지는 임시메모리 사이즈와 관련된 값
+
+    <Resource name="jdbc/myuser" 
+    		  auth="Container"
+    		  type="javax.sql.DataSource"
+    		  driverClassName="oracle.jdbc.driver.OracleDriver"
+    		  url="jdbc:oracle:thin:@tcp://localhost:1521/xe"
+    		  username="myuser"
+    		  password="oracle4U"
+    		  maxTotal="50"
+    		  maxWaitMillis="-1"/>
+
+web-info->lib 폴더에 tomcat-dbcp.jar파일

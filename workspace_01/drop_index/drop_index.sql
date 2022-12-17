@@ -1,0 +1,1 @@
+DROP INDEX hr.idx_lname_emp;

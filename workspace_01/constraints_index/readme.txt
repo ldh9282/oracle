@@ -1,0 +1,4 @@
+-- not null 제약조건 >> fk 제약조건 >> unique 제약조건 >> 유효성검사(check) 제약조건
+-- pk에 대한 unique 인덱스>> fk에 대한 non-unique 인덱스
+-- 참고로 unique 제약조건과 pk 제약조건은 자동으로 unique 인덱스로 생성되나 이름정의하기 위해 명시함
+-- fk 제약조건은 인덱스가 생성되지 않음. fk는 널허용, 넌 유니크가 디폴트이므로 non-unique 인덱스로 생성

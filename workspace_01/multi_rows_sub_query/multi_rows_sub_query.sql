@@ -1,0 +1,35 @@
+-- multi rows sub query
+SELECT 
+    EMPLOYEE_ID,
+    LAST_NAME,
+    SALARY
+FROM HR.EMPLOYEES
+WHERE SALARY < ALL (
+
+    SELECT
+        AVG(SALARY)
+    FROM HR.EMPLOYEES
+    WHERE DEPARTMENT_ID IN (10, 20, 30)
+    GROUP BY DEPARTMENT_ID
+
+)
+;
+
+-- same result
+-- single row sub query
+
+SELECT 
+    EMPLOYEE_ID,
+    LAST_NAME,
+    SALARY
+FROM HR.EMPLOYEES
+WHERE SALARY < (
+
+    SELECT
+        MIN(AVG(SALARY))
+    FROM HR.EMPLOYEES
+    WHERE DEPARTMENT_ID IN (10, 20, 30)
+    GROUP BY DEPARTMENT_ID
+
+)
+;
